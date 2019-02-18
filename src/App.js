@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, Button, Jumbotron, Nav, NavDropdown, NavItem, NavbarBrand, Form, FormControl } from 'react-bootstrap';
+import CustomNavbar from './components/CustomNavbar';
+
+
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Container>
+        <CustomNavbar></CustomNavbar>
+        <Col xm={1}></Col>
+        <Col xm={10}>
+        <Jumbotron>Test</Jumbotron>
+        </Col>
+        <Col xm={1}></Col>
+        
+      </Container>
     );
   }
 }
