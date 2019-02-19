@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchTokens } from '../../actions/tokenActions';
 import { Container, ListGroup } from 'react-bootstrap';
 import axios from 'axios';
 import TokenListItem from './TokenListItem';
+import { bindActionCreators } from 'redux';
 
 
 class TokenIndex extends Component {
@@ -14,22 +17,15 @@ class TokenIndex extends Component {
   }
 
   componentWillMount()  {
-    this.getTokens();
-  }
-  
-  getTokens = async () => {
-    let url = 'https://roll-76f98.firebaseio.com/tokens.json';
-    const resp = await axios.get(url)
-
-    this.setState({
-      tokens: [Object.values(resp.data)], // convert from a map to an array of objects
-    }, console.log(resp.data))
-
+    this.props.fetchTokens();
+    console.log('this.props :', this.props);
   }
 
   renderTokens() {
-    const tokens = this.state.tokens[0];
-    if (tokens && tokens.length) {
+    // debugger
+    if (this.props.tokens.tokens.length === 1) {
+      // debugger
+      const tokens = Object.values(this.props.tokens.tokens[0])
       return (
         <TokenListItem tokens={tokens}/>
       )
@@ -38,6 +34,7 @@ class TokenIndex extends Component {
 
 
   render() {
+    console.log('this.props :', this.props);
     return (
       <Container>
         <h1>Index of Tokens</h1>
@@ -49,4 +46,16 @@ class TokenIndex extends Component {
   }
 }
 
-export default TokenIndex;
+const mapStateToProps = state => {
+  return ({
+    tokens: state.tokens
+  })
+}
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    fetchTokens: fetchTokens
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TokenIndex);
