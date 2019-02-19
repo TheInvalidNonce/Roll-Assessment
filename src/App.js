@@ -18,7 +18,7 @@ class App extends Component {
           <Route exact path="/" component={Home}/>
           <Route exact path="/tokens" component={TokenIndex}/>
           <Route exact path="/tokens/new" component={TokensNew}></Route>
-          <Route exact path="/tokens/:tokenId" component={TokenShow}></Route>
+          <Route path="/tokens/:tokenId" component={TokenShow}></Route>
         </Switch>
       </div>
     );

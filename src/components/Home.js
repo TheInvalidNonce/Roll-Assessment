@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import CustomNavbar from './CustomNavbar';
 import { Container, Row, Col, Button, Jumbotron, } from 'react-bootstrap';
+import TokenIndex from '../components/tokens/TokenIndex';
+
 class Home extends Component {
   constructor() {
     super()
@@ -10,9 +11,9 @@ class Home extends Component {
     return (
       <div>
         <Container>
-        <Col xm={1}><h1 xm={10}>Home Component</h1></Col>
+        <Col xm={1}><h1 xm={10}>Tokens</h1></Col>
         <Col xm={10}>
-        <Jumbotron>Test</Jumbotron>
+          <TokenIndex />
         </Col>
         <Col xm={1}></Col>
       </Container>

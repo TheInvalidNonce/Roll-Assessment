@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { Container } from 'react-bootstrap';
 
 class TokenShow extends Component {
   render() {
+    debugger
     return (
-      <div>
-        
-      </div>
+      <Container>
+
+
+        <h2>{this.props.match.params.tokenId}</h2>
+      </Container>
     )
   }
 }
