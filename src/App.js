@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button, Jumbotron, Nav, NavDropdown, NavItem, NavbarBrand, Form, FormControl } from 'react-bootstrap';
+import { Switch, Route } from 'react-router-dom';
+import TokenIndex from './components/tokens/TokenIndex';
+import TokensNew from './components/tokens/TokenNew';
+import TokenShow from './components/tokens/TokenShow';
 import CustomNavbar from './components/CustomNavbar';
-
+import Home from './components/Home';
 
 
 class App extends Component {
+
   render() {
     return (
-      <Container>
-        <CustomNavbar></CustomNavbar>
-        <Col xm={1}></Col>
-        <Col xm={10}>
-        <Jumbotron>Test</Jumbotron>
-        </Col>
-        <Col xm={1}></Col>
-        
-      </Container>
+      <div>
+        <CustomNavbar/>
+        <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route exact path="/tokens" component={TokenIndex}/>
+          <Route exact path="/tokens/new" component={TokensNew}></Route>
+          <Route exact path="/tokens/:tokenId" component={TokenShow}></Route>
+        </Switch>
+      </div>
     );
   }
 }
