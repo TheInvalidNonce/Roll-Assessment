@@ -1,32 +1,15 @@
-import { ADD_TOKEN, GET_TOKENS, GET_TOKEN } from '../actions/types/types'
-import _ from 'lodash';
+import { ADD_TOKEN, GET_TOKENS } from "../actions/types/types";
+import _ from "lodash";
 
-const initialState = {
-  tokens: [],
-  currentToken: null
-}
-
-const tokensReducer = (state = initialState, action) => {
-  console.log('In reducer')
-  // Object.freeze(state);
-  // let newState = _.extend({}, state);
-
+const tokensReducer = (state = {}, action) => {
   switch (action.type) {
-    case  GET_TOKEN: 
-      return _.extend({}, state, {
-        tokens: [action.tokens],
-        currentToken: action.token
-      })
-    case GET_TOKENS: 
-      // debugger
-      return _.extend({}. state, {
-        tokens: [action.tokens]
-      })
-    case ADD_TOKEN: 
-      return [...state, action.payload]
+    case GET_TOKENS:
+      return _.extend({}, state, action.tokens);
+    case ADD_TOKEN:
+      return _.extend(state.tokens, action.payload);
     default:
-      return state
+      return state;
   }
-}
+};
 
 export default tokensReducer;
